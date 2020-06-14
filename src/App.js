@@ -8,7 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import { AuthContext } from "./context/auth";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
+import "./assets/shards-dashboards.1.1.0.min.css";
 
 export default () => {
   const existingTokens = JSON.parse(localStorage.getItem("tokens"));
