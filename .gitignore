@@ -27,3 +27,4 @@ src/views/AddNewPost.js
 src/components/blog/Discussions.js
 src/components/blog/NewDraft.js
 src/views/BlogOverview.js
+src/shards-dashboard
