@@ -17,6 +17,7 @@ import SelectSearch from 'react-select-search';
 import moment from 'moment';
 
 import "../../assets/selectSearch.css";
+import "../../assets/random.css";
 import { useAuth } from "../../context/auth";
 import { handlError } from "../../context/util";
 
@@ -201,7 +202,7 @@ const AddTickets = ({ add, toggle, action }) => {
                   <Row form>
                     <Col md="4" className="form-group">
                       <label htmlFor="feInputTicketDateTime">Show Date<span className="text-danger error-message">*</span></label>
-                      <FormInput id="feInputTicketDateTime" type="date" onChange={e => setDate(e.target.value)} required />
+                      <FormInput id="feInputTicketDateTime" type="date" min={moment().format("YYYY-MM-DD")} onChange={e => setDate(e.target.value)} required />
                     </Col>
                     <Col md="4" className="form-group">
                       <label htmlFor="feInputTicketDateTime">Show Time<span className="text-danger">*</span></label>

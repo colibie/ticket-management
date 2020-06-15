@@ -15,6 +15,7 @@ import {
   CardHeader, Alert
 } from "shards-react";
 
+import "../assets/random.css";
 import { useAuth } from "../context/auth";
 import { validateEmail } from "../hooks/validator";
 import { handlError } from "../context/util";

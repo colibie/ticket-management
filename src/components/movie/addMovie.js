@@ -15,6 +15,7 @@ import {
 import axios from "axios";
 
 import "../../assets/selectSearch.css";
+import "../../assets/random.css";
 import { useAuth } from "../../context/auth";
 import { handlError } from "../../context/util";
 

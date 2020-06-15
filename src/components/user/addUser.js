@@ -15,6 +15,7 @@ import {
 import axios from "axios";
 
 import "../../assets/selectSearch.css";
+import "../../assets/random.css";
 import { useAuth } from "../../context/auth";
 import { handlError } from "../../context/util";
 import { validateEmail, validatePhone } from "../../hooks/validator";
@@ -32,7 +33,8 @@ const AddUser = ({ open, toggle, action }) => {
   const [phoneError, setPhoneError] = useState(false);
   const { authTokens } = useAuth();
 
-  async function addUser() {
+  async function addUser(e) {
+    e.preventDefault();
     setAddSuccess(false);
     setAddError(false);
     try {

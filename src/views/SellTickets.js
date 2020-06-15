@@ -29,7 +29,7 @@ const SellTickets = () => {
     try {
       const res = await axios({
         url: `${API}/tickets`,
-        params: { _populate: 'movie', movieDate: { $lte: Date.now() } },
+        params: { _populate: 'movie', movieDate: { $gte: new Date() } },
         headers: {
           authorization: `Bearer ${authTokens._token}`
         }
@@ -119,7 +119,7 @@ const SellTickets = () => {
 
   function returnTickets() {
     if (tickets) {
-      if (isEmpty(tickets)) return <Card><CardBody>Please create Ticket</CardBody></Card>;
+      if (isEmpty(tickets)) return <Col lg="12"><Card><CardBody>Please create Ticket</CardBody></Card></Col>;
       let listTickets = map(tickets, data => {
         const setByTime = moment().calendar(data.movieDate, {
           sameDay: '[Today]',

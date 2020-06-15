@@ -1,0 +1,9 @@
+.error-message {
+	font-size: .8125rem;
+}
+
+.modal {
+  box-sizing: border-box;
+  z-index: 1110 !important;
+  overflow: scroll !important;
+}
