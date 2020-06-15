@@ -44,6 +44,16 @@ const Users = () => {
       </Row>
       {isError && <Alert theme="danger">{isError}</Alert>}
 
+      {!users &&
+      <Row>
+        <Col lg="12">
+        <Card>
+          <CardBody>Loading users...</CardBody>
+        </Card>
+        </Col>
+      </Row>
+      }
+
       {/* Default Light Table */}
       {users &&
         <Row>
@@ -83,7 +93,7 @@ const Users = () => {
                       ))}
                     </tbody>
                   </table> :
-                    <p>No user added yet</p>
+                    "No user added yet"
                   }
               </CardBody>
             </Card>

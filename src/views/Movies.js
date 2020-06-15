@@ -48,6 +48,16 @@ const Movies = () => {
       </Row>
       {isError && <Alert theme="danger">{isError}</Alert>}
 
+      {!movies &&
+      <Row>
+        <Col lg="12">
+        <Card>
+          <CardBody>Loading movies...</CardBody>
+        </Card>
+        </Col>
+      </Row>
+      }
+
       {/* group by creation date */}
       {movies && !isEmpty(movies) &&
         <Row>
@@ -75,9 +85,13 @@ const Movies = () => {
       }
 
       {movies && isEmpty(movies) &&
+      <Row>
+        <Col lg="12">
         <Card>
           <CardBody>Create Movie</CardBody>
         </Card>
+        </Col>
+      </Row>
       }
 
       <AddMovie add={open} toggle={() => setOpen(!open)} action={() => fetchMovies()} />
