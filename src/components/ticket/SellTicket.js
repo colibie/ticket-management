@@ -11,6 +11,7 @@ import {
 } from "shards-react";
 import axios from "axios";
 import moment from 'moment';
+import isEmpty from 'lodash/isEmpty';
 
 import "../../assets/selectSearch.css";
 import "../../assets/random.css";
@@ -150,7 +151,7 @@ const SellTicket = ({ sell, toggle, data, action }) => {
 
                   <Row>
                     <Col md="8" className="form-group">
-                      <label htmlFor="feInputUser">Search user<span className="text-danger error-message">*</span></label>
+                      <label htmlFor="feInputUser">Search user<span className="text-danger error-message">{isEmpty(users) ? "Go and create user first" : "*"}</span></label>
                       <SelectSearch
                         id="feInputUser"
                         ref={userEmail}

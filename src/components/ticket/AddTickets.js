@@ -15,6 +15,7 @@ import {
 import axios from "axios";
 import SelectSearch from 'react-select-search';
 import moment from 'moment';
+import isEmpty from 'lodash/isEmpty';
 
 import "../../assets/selectSearch.css";
 import "../../assets/random.css";
@@ -111,7 +112,7 @@ const AddTickets = ({ add, toggle, action }) => {
               <Col>
                 <Form>
                   <FormGroup>
-                    <label htmlFor="movie">Movie<span className="text-danger error-message">*</span></label>
+                    <label htmlFor="movie">Movie<span className="text-danger error-message">{isEmpty(movies) ? "Go and create movies first" : "*"}</span></label>
                     <SelectSearch
                       id="ticketType"
                       options={movies}
