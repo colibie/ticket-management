@@ -57,6 +57,11 @@ const SellTicket = ({ sell, toggle, data, action }) => {
       // eslint-disable-next-line no-restricted-globals
       if (!confirm("Proceed to print?")) return;
 
+      const w = window.open("", "print window", "width=200,height=100");
+      w.document.write(printText(userEmail.current.firstChild.firstChild.value, ticket));
+      w.print();
+      w.close();
+
       const res = await axios.put(`${API}/tickets/update/${ticket._id}`,
         {
           $push: { customers: user },
@@ -71,10 +76,6 @@ const SellTicket = ({ sell, toggle, data, action }) => {
         setSoldSuccess(true);
         setSoldError(false);
         action();
-        const w = window.open("", "print window", "width=200,height=100");
-        w.document.write(printText(userEmail.current.firstChild.firstChild.value, ticket));
-        w.print();
-        w.close();
       } else {
         setSoldError(res.message);
       }
