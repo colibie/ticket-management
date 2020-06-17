@@ -10,7 +10,7 @@ import Movies from "./views/Movies";
 import Users from "./views/Users";
 import CreateAdmin from "./views/CreateAdmin";
 import UserProfileLite from "./views/UserProfileLite";
-// import AddNewPost from "./views/AddNewPost";
+import PrintPreview from "./views/PrintPreview";
 import Errors from "./views/Errors";
 import ComponentsOverview from "./views/ComponentsOverview";
 import BlogPosts from "./views/BlogPosts";
@@ -47,11 +47,11 @@ export default [
     layout: DefaultLayout,
     component: UserProfileLite
   },
-  // {
-  //   path: "/add-new-post",
-  //   layout: DefaultLayout,
-  //   component: AddNewPost
-  // },
+  {
+    path: "/print-preview",
+    layout: DefaultLayout,
+    component: PrintPreview
+  },
   {
     path: "/errors",
     layout: DefaultLayout,
