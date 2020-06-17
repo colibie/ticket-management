@@ -45,56 +45,63 @@ const Users = () => {
       {isError && <Alert theme="danger">{isError}</Alert>}
 
       {!users &&
-      <Row>
-        <Col lg="12">
-        <Card>
-          <CardBody>Loading users...</CardBody>
-        </Card>
-        </Col>
-      </Row>
+        <Row>
+          <Col lg="12">
+            <Card>
+              <CardBody>Loading users...</CardBody>
+            </Card>
+          </Col>
+        </Row>
+      }
+
+      {users && isEmpty(users) &&
+        <Row>
+          <Col lg="12">
+            <Card>
+              <CardBody>No users added yet</CardBody>
+            </Card>
+          </Col>
+        </Row>
       }
 
       {/* Default Light Table */}
-      {users &&
+      {users && !isEmpty(users) &&
         <Row>
           <Col>
             <Card small className="mb-4">
               <CardBody className="p-0 pb-3">
-                {!isEmpty(users) ?
-                  <table className="table mb-0">
-                    <thead className="bg-light">
-                      <tr>
-                        <th scope="col" className="border-0">
-                          #
+                <table className="table mb-0">
+                  <thead className="bg-light">
+                    <tr>
+                      <th scope="col" className="border-0">
+                        #
                   </th>
-                        <th scope="col" className="border-0">
-                          First Name
+                      <th scope="col" className="border-0">
+                        First Name
                   </th>
-                        <th scope="col" className="border-0">
-                          Last Name
+                      <th scope="col" className="border-0">
+                        Last Name
                   </th>
-                        <th scope="col" className="border-0">
-                          Email
+                      <th scope="col" className="border-0">
+                        Email
                   </th>
-                        <th scope="col" className="border-0">
-                          Phone
+                      <th scope="col" className="border-0">
+                        Phone
                   </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users.map((user, idx) => (
+                      <tr key={idx}>
+                        <td>{idx + 1}</td>
+                        <td>{user.firstName}</td>
+                        <td>{user.lastName}</td>
+                        <td>{user.email}</td>
+                        <td>{user.phone}</td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {users.map((user, idx) => (
-                        <tr key={idx}>
-                          <td>{idx + 1}</td>
-                          <td>{user.firstName}</td>
-                          <td>{user.lastName}</td>
-                          <td>{user.email}</td>
-                          <td>{user.phone}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table> :
-                    "No user added yet"
-                  }
+                    ))}
+                  </tbody>
+                </table>
               </CardBody>
             </Card>
           </Col>

@@ -95,7 +95,7 @@ const SellTickets = () => {
                   <p className="card-text d-block mb-3">
                     N<NumberFormat value={ticket.price} displayType={'text'} thousandSeparator={true} decimalSeparator={"."} decimalScale={2} />
                   </p>
-                  <Button size="sm" theme="secondary" className="mb-2 mr-auto" onClick={() => handleSell(ticket)}>
+                  <Button size="sm" theme="secondary" className="mb-2 mr-auto" disabled={remaining === 0} onClick={() => handleSell(ticket)}>
                     SELL TICKET
                   </Button>
                   {/* <span className="text-muted">{post.date}</span> */}
