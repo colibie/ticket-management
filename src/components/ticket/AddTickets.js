@@ -41,7 +41,7 @@ const AddTickets = ({ add, toggle, action }) => {
   const { authTokens } = useAuth();
 
   function addCall(type, price, capacity) {
-    if (!movie || movie.length < 12) throw new Error("movie is required");
+    if (!movie || movie.length !== 24) throw new Error("movie is required");
     if (!date || !time) throw new Error("movie date/time is required");
     if (isNaN(price) || isNaN(capacity)) throw new Error("all prices/capacity must be numbers");
     return axios.post(`${API}/tickets`, {

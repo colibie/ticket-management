@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Row,
   Col,
@@ -19,6 +19,24 @@ import { handlError } from "../../context/util";
 import SelectSearch from "react-select-search";
 import NumberFormat from "react-number-format";
 
+const printText = (user, ticket) => {
+  return `<div style="text-align:center">
+    SHOWBOX filmhouse <br/>
+              Contact: 07067461403 <br/>
+              ${moment().format("ddd, DD-MM-YYYY HH:MM a")} <br/>
+              ************************** <br/>
+              TICKET DETAILS <br/>
+                           
+              Owner: ${user}<br/>
+              Movie: ${ticket.movie.name} <br/>
+              Movie Date: ${moment(ticket.movieDate).format("ddd, DD-MM-YYYY hh:mm a")} <br/>
+              Ticket Type: <strong>${ticket.type}</strong> <br/>
+              Price: N ${ticket.price} <br/>
+              *************************** <br/>
+              Thanks for your patronage <br/>
+              Enjoy the movie!
+  </div>`;
+}
 const API = process.env.REACT_APP_API;
 
 const SellTicket = ({ sell, toggle, data, action }) => {
@@ -26,6 +44,7 @@ const SellTicket = ({ sell, toggle, data, action }) => {
   const [soldError, setSoldError] = useState(false);
   const [user, setUser] = useState(false);
   const [users, setUsers] = useState(false);
+  const userEmail = useRef(null);
   const { authTokens } = useAuth();
 
   async function sellAction(e, ticket) {
@@ -33,7 +52,11 @@ const SellTicket = ({ sell, toggle, data, action }) => {
     setSoldSuccess(false);
     setSoldError(false);
     try {
-      if (!user || user.length !== 12) throw new Error("user is required");
+      if (!user || user.length !== 24) throw new Error("user is required");
+      
+      // eslint-disable-next-line no-restricted-globals
+      if (!confirm("Proceed to print?")) return;
+
       const res = await axios.put(`${API}/tickets/update/${ticket._id}`,
         {
           $push: { customers: user },
@@ -48,6 +71,10 @@ const SellTicket = ({ sell, toggle, data, action }) => {
         setSoldSuccess(true);
         setSoldError(false);
         action();
+        const w = window.open("", "print window", "width=200,height=100");
+        w.document.write(printText(userEmail.current.firstChild.firstChild.value, ticket));
+        w.print();
+        w.close();
       } else {
         setSoldError(res.message);
       }
@@ -124,7 +151,8 @@ const SellTicket = ({ sell, toggle, data, action }) => {
                     <Col md="8" className="form-group">
                       <label htmlFor="feInputUser">Search user<span className="text-danger error-message">*</span></label>
                       <SelectSearch
-                        id="ticketType"
+                        id="feInputUser"
+                        ref={userEmail}
                         options={users}
                         search
                         placeholder="Search user"
