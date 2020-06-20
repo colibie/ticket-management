@@ -6,28 +6,25 @@ A movie ticketing react app
 <h3>Ticket-management </h3>
 <p> A movie ticketing application with template from Shards Dashboard template.</p>
 </p>
-
-<br />
-
-> ✨ **Note:** You can download the Sketch files from the official product page.
-
+- [Visit the site](https://github.com/designrevision/shards-react)
+- [See the API](https://ticket-management-api.herokuapp.com/)
 <br />
 
 ### Quick Start
 
 * Install dependencies by running `yarn` or `npm install`.
 * Run `yarn start` or `npm run start` to start the local development server.
-* 😎 **That's it!** You're ready to start building awesome dashboards.
+* Login with `email: admin@gmail.com` and `password: admin`.
+* 😎 **That's it!** You're ready to explore.
 
 <br />
 
 ### Project Structure
 
 - This project is bootstrapped using [Create React App](https://github.com/facebook/create-react-app).
-- **Flux** is used for state management and all Flux specific files are located inside `src/flux`. Transitioning to a more robust solution such as Redux is also fairly simple.
+- **Flux** is used for state management and all Flux specific files are located inside `src/flux`.
 - All primary templates are located inside `src/views`.
 - The `src/components` directory hosts all template-specific subcomponents in their own subdirectory.
-- The layout styles inherited from Shards Dashboard are pulled in from the `src/shards-dashboard` submodule inside `src/App.js`.
 - Other extra styles specific to the libraries used are located inside `src/assets`.
 
 <br />
@@ -57,10 +54,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 - [Shards React](https://github.com/designrevision/shards-react)
 - [Flux](https://facebook.github.io/flux/)
 - [React Datepicker](https://www.npmjs.com/package/react-datepicker)
-- [Quill](https://quilljs.com/)
-
-<br />
-
-### Changelog
-
-Please check out the [CHANGELOG](CHANGELOG.md).
